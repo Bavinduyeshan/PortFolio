@@ -48,7 +48,7 @@ export default function Skills() {
           <h1 className="mt-1 text-lg font-semibold text-white sm:text-slate-900 md:text-3xl">Undergraduate Software Engineer</h1>
         </div>
 
-        <div
+        {/* <div
           data-aos="fade-up"
           data-aos-delay="300"
           className="grid gap-8 col-start-1 col-end-3 row-start-1 sm:mb-8 sm:grid-cols-4 lg:gap-10 lg:col-start-2 lg:row-end-6 lg:row-span-6 lg:mb-0"
@@ -59,7 +59,7 @@ export default function Skills() {
             className="w-full h-96 object-cover rounded-lg sm:h-80 sm:col-span-2 lg:col-span-full"
             loading="lazy"
           />
-        </div>
+        </div> */}
 
         <div
           data-aos="fade-up"

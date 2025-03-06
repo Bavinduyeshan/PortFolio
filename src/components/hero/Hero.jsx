@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../navbar/Navbar';
-import me from '../../assets/myimg.png';
+import me from '../../assets/myimg2.jpg';
 import Skills from '../skills/Skills';
 import Projects from '../projects/Projects';
 import Contact from '../contact/Contact';
@@ -33,11 +33,17 @@ export default function Hero() {
         </div>
 
         <div data-aos='fade-up' className='flex-1 flex justify-center md:justify-end mt-0 md:mt-0'>
-          <img 
+          {/* <img 
             src={me} 
             alt="my image" 
             className='h-[300px] sm:h-[400px] md:h-[450px] w-[450px] sm:w-[360px] object-cover rounded-lg' 
-          />
+          /> */}
+          <img 
+  src={me} 
+  alt="my image" 
+  className="h-[330px] w-[330px] object-cover rounded-full"
+/>
+
         </div>
       </section>
 
