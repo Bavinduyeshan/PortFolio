@@ -86,7 +86,7 @@ export default function Contact() {
         <div className="absolute w-[400px] h-[400px] bg-gradient-to-r from-blue-500/15 to-purple-500/15 rounded-full top-96 right-0 transform -rotate-45"></div>
       </div> */}
 
-      <div data-aos="fade-up" data-aos-delay="300" className="container mx-auto px-6 lg:px-16 relative z-10">
+      <div data-aos="fade-up" data-aos-delay="300" className="container mx-auto px-6 lg:px-16 relative z-10 mt-5">
         <h2 className="text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 mb-12">
           Get in Touch
         </h2>
@@ -148,6 +148,11 @@ export default function Contact() {
           </div>
         </div>
       </div>
+
+      {/* Footer Section */}
+      <footer className="bg-gray-900 text-center text-white py-4 mt-10">
+        <p>&copy; {new Date().getFullYear()} Bavinduyeshan. All rights reserved.</p>
+      </footer>
     </section>
   );
 }

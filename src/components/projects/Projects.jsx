@@ -152,6 +152,9 @@ import chatbot from '../../assets/chatbotc.jpg';
 import chatbotcshrape from '../../assets/cht.jpg';
 import unist from '../../assets/unist.jpeg';
 import weatherf from '../../assets/weatherappf.jpeg';
+import patientmedical from '../../assets/patientmedical.jpeg';
+import mediguide from '../../assets/mdeiguide.jpeg';
+import tictac from '../../assets/tictac.jpeg';
 
 const projects = [
   {
@@ -223,6 +226,30 @@ const projects = [
     title: "Flutter Weather App",
     description: "A simple weather app created using Flutter.",
     image: weatherf,
+    github: "https://github.com/Bavinduyeshan/Flutter-Weather-App.git",
+    linkedin: "https://www.linkedin.com/posts/bavindu-yeshan-3a26052a7_flutter-dart-mobileapp-activity-7285670784084144128-P5t1?utm_source=share&utm_medium=member_desktop",
+  },
+    {
+    id: 9,
+    title: "Advanced Patient-Medical Record Management System ",
+    description: " robust web-based solution built using React for a dynamic frontend and Spring Boot microservices for a scalable and secure backend. It streamlines patient data handling, appointment scheduling, and medical history management, enabling efficient healthcare delivery with a modern microservices architecture.",
+    image: patientmedical,
+    github: "https://github.com/Bavinduyeshan/Flutter-Weather-App.git",
+    linkedin: "https://www.linkedin.com/posts/bavindu-yeshan-3a26052a7_flutter-dart-mobileapp-activity-7285670784084144128-P5t1?utm_source=share&utm_medium=member_desktop",
+  },
+    {
+    id: 9,
+    title: "Swift iOS  Tic Tac Toe App",
+    description: "A simple Tic Tac Toa app created using Swift.",
+    image: tictac,
+    github: "https://github.com/Bavinduyeshan/Flutter-Weather-App.git",
+    linkedin: "https://www.linkedin.com/posts/bavindu-yeshan-3a26052a7_flutter-dart-mobileapp-activity-7285670784084144128-P5t1?utm_source=share&utm_medium=member_desktop",
+  },
+   {
+    id: 9,
+    title: "Medi-Guide ",
+    description: "A platform that helps people around the world search medicines and get reliable Information",
+    image: mediguide,
     github: "https://github.com/Bavinduyeshan/Flutter-Weather-App.git",
     linkedin: "https://www.linkedin.com/posts/bavindu-yeshan-3a26052a7_flutter-dart-mobileapp-activity-7285670784084144128-P5t1?utm_source=share&utm_medium=member_desktop",
   },
