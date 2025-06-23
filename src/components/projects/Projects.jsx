@@ -230,29 +230,29 @@ const projects = [
     linkedin: "https://www.linkedin.com/posts/bavindu-yeshan-3a26052a7_flutter-dart-mobileapp-activity-7285670784084144128-P5t1?utm_source=share&utm_medium=member_desktop",
   },
     {
-    id: 9,
+    id: 10,
     title: "Advanced Patient-Medical Record Management System ",
     description: " robust web-based solution built using React for a dynamic frontend and Spring Boot microservices for a scalable and secure backend. It streamlines patient data handling, appointment scheduling, and medical history management, enabling efficient healthcare delivery with a modern microservices architecture.",
     image: patientmedical,
     github: "https://github.com/Bavinduyeshan/Flutter-Weather-App.git",
-    linkedin: "https://www.linkedin.com/posts/bavindu-yeshan-3a26052a7_flutter-dart-mobileapp-activity-7285670784084144128-P5t1?utm_source=share&utm_medium=member_desktop",
+    linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7322837235370729473/",
   },
     {
-    id: 9,
+    id: 11,
     title: "Swift iOS  Tic Tac Toe App",
     description: "A simple Tic Tac Toa app created using Swift.",
     image: tictac,
     github: "https://github.com/Bavinduyeshan/Flutter-Weather-App.git",
-    linkedin: "https://www.linkedin.com/posts/bavindu-yeshan-3a26052a7_flutter-dart-mobileapp-activity-7285670784084144128-P5t1?utm_source=share&utm_medium=member_desktop",
+    linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7336467861994991619/",
   },
    {
-    id: 9,
+    id: 12,
     title: "Medi-Guide ",
     description: "A platform that helps people around the world search medicines and get reliable Information",
     image: mediguide,
     github: "https://github.com/Bavinduyeshan/Flutter-Weather-App.git",
-    linkedin: "https://www.linkedin.com/posts/bavindu-yeshan-3a26052a7_flutter-dart-mobileapp-activity-7285670784084144128-P5t1?utm_source=share&utm_medium=member_desktop",
-  },
+    linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7329592696581292033/",
+    }
 ];
 
 export default function Projects() {
