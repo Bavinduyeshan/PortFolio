@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bavinduyeshan-web.netlify.app/sitemap.xml
