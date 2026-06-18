@@ -213,8 +213,7 @@ export default function Skills() {
               <img src={linkedinLogo} alt="LinkedIn" className="w-10 h-10 object-contain" />
             </div>
             <div className="my-3 text-slate-400 text-sm font-semibold">
-              📈 500+ Connections <br />
-              💼 Software engineering updates
+              💼 Connect with me for new updates
             </div>
             <a
               href="https://www.linkedin.com/in/bavindu-yeshan-3a26052a7/"
@@ -287,10 +286,11 @@ export default function Skills() {
               </div>
               <img src={githubLogo} alt="GitHub" className="w-10 h-10 object-contain filter invert opacity-80" />
             </div>
-            <div className="my-2 text-slate-400 text-sm font-semibold">
-              💻 12+ Public Repositories <br />
-              🚀 Actively pushing clean code
+
+            <div className="my-3 text-slate-400 text-sm font-semibold">
+              💼 Connect with me for new updates
             </div>
+
             <a
               href="https://github.com/Bavinduyeshan"
               target="_blank"
@@ -318,7 +318,7 @@ export default function Skills() {
               "Simplicity is the soul of efficiency."
             </p>
             <div className="mt-4 font-mono text-xs text-indigo-400 flex items-center space-x-1 select-none">
-              <span>bavindu@nibm</span>
+              <span>bavinduyeshan</span>
               <span className="w-2 h-4 bg-indigo-500 animate-pulse inline-block"></span>
             </div>
           </div>
