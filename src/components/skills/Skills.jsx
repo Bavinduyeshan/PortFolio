@@ -150,11 +150,11 @@ import firebaselogo from '../../assets/firebase.jpeg';
 
 export default function Skills() {
   const programmingLanguages = [
-    { id: 1, name: 'Java', logo: javaLogo },
-    { id: 2, name: 'Python', logo: pythonLogo },
-    { id: 3, name: 'HTML', logo: htmllogo },
-    { id: 4, name: 'C', logo: clogo },
-    { id: 5, name: 'CSS', logo: csslogo },
+    { id: 1, name: 'Java', logo: javaLogo, level: '85%' },
+    { id: 2, name: 'Python', logo: pythonLogo, level: '80%' },
+    { id: 3, name: 'HTML5', logo: htmllogo, level: '90%' },
+    { id: 4, name: 'C Language', logo: clogo, level: '75%' },
+    { id: 5, name: 'CSS3', logo: csslogo, level: '85%' },
   ];
 
   const frameworksAndTools = [
@@ -168,84 +168,161 @@ export default function Skills() {
   ];
 
   return (
-    <section id="skills" className='mt-28'>
-      {/* className="relative py-16 bg-gradient-to-b from-indigo-900 via-gray-900 to-black overflow-hidden" */}
-      {/* Background gradient circles */}
-      {/* <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute w-[600px] h-[600px] bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 rounded-full -top-48 -left-48 transform rotate-12 animate-pulse"></div>
-        <div className="absolute w-[400px] h-[400px] bg-gradient-to-r from-blue-500/15 to-purple-500/15 rounded-full top-96 right-0 transform -rotate-45"></div>
-      </div> */}
-
-      <div className="container mx-auto px-6 lg:px-16 relative z-10">
-        <h2 data-aos="fade-up" className="text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 mb-12">
-          My Skills
+    <section id="skills" className="py-24 relative">
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        <h2 data-aos="fade-up" className="text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 mb-16 animate-gradient">
+          About & Skills
         </h2>
 
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left Column: Description and Social Links */}
-          <div data-aos="fade-up" data-aos-delay="300" className="flex flex-col justify-center">
-            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4">
-              Undergraduate Software Engineer
-            </h3>
-            <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
-              I'm pursuing a Diploma in Software Engineering at the National Institute of Business Management. My academic journey has built a solid foundation in software development, algorithms, data structures, and OOP. With hands-on experience in Java, C#, and web technologies, I've worked on projects showcasing both front-end and back-end skills.
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          
+          {/* Card 1: About Me (Spans 2 columns, 1 row) */}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="md:col-span-2 bg-slate-900/40 border border-slate-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl flex flex-col justify-between hover:border-indigo-500/30 transition-colors duration-300 min-h-[240px]"
+          >
+            <div>
+              <span className="text-indigo-400 text-xs font-bold uppercase tracking-widest">About Me</span>
+              <h3 className="text-2xl font-bold text-white mt-2 mb-4">Undergraduate Software Engineer</h3>
+              <p className="text-slate-400 text-sm md:text-base leading-relaxed">
+                I'm pursuing a Diploma in Software Engineering at NIBM. My studies build a solid foundation in software development, algorithms, data structures, and OOP. With hands-on experience in Java, C#, and web technologies, I build robust systems spanning both front-end and back-end logic.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2 mt-4">
+              {['OOP', 'Algorithms', 'Data Structures', 'REST APIs', 'Database Design'].map((tag) => (
+                <span key={tag} className="text-xs bg-slate-850 border border-slate-800 text-slate-300 px-3 py-1 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Card 2: LinkedIn (Spans 1 column, 1 row) */}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="200"
+            className="bg-slate-900/40 border border-slate-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl flex flex-col justify-between hover:border-indigo-500/30 transition-colors duration-300 min-h-[240px]"
+          >
+            <div className="flex items-start justify-between">
+              <div>
+                <span className="text-indigo-400 text-xs font-bold uppercase tracking-widest">Connect</span>
+                <h3 className="text-2xl font-bold text-white mt-2">LinkedIn</h3>
+              </div>
+              <img src={linkedinLogo} alt="LinkedIn" className="w-10 h-10 object-contain" />
+            </div>
+            <div className="my-3 text-slate-400 text-sm font-semibold">
+              📈 500+ Connections <br />
+              💼 Software engineering updates
+            </div>
+            <a
+              href="https://www.linkedin.com/in/bavindu-yeshan-3a26052a7/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full text-center bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition-all duration-300 text-sm shadow-md hover:shadow-indigo-500/20 active:scale-95"
+            >
+              Let's Connect
+            </a>
+          </div>
+
+          {/* Card 3: Programming Languages (Spans 1 column, 2 rows) */}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="300"
+            className="md:col-span-1 md:row-span-2 bg-slate-900/40 border border-slate-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl flex flex-col hover:border-indigo-500/30 transition-colors duration-300"
+          >
+            <span className="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-6">Languages</span>
+            <div className="space-y-6 flex-grow">
+              {programmingLanguages.map((lang) => (
+                <div key={lang.id} className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <img src={lang.logo} alt={lang.name} className="w-6 h-6 object-contain rounded" />
+                      <span className="text-sm font-semibold text-slate-200">{lang.name}</span>
+                    </div>
+                    <span className="text-xs font-mono text-indigo-400">{lang.level}</span>
+                  </div>
+                  <div className="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden border border-slate-800">
+                    <div
+                      className="bg-gradient-to-r from-indigo-500 to-purple-500 h-full rounded-full shadow-[0_0_8px_rgba(99,102,241,0.5)]"
+                      style={{ width: lang.level }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Card 4: Frameworks & Tools (Spans 1 column, 2 rows) */}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="400"
+            className="md:col-span-1 md:row-span-2 bg-slate-900/40 border border-slate-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl flex flex-col hover:border-indigo-500/30 transition-colors duration-300"
+          >
+            <span className="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-6">Frameworks & Tools</span>
+            <div className="grid grid-cols-2 gap-4 flex-grow content-start">
+              {frameworksAndTools.map((tool) => (
+                <div
+                  key={tool.id}
+                  className="flex flex-col items-center justify-center p-3 bg-slate-950/40 border border-slate-800 rounded-xl hover:border-indigo-500/30 hover:bg-slate-900/20 transition-all duration-300 group"
+                >
+                  <img src={tool.logo} alt={tool.name} className="w-8 h-8 object-contain mb-2 group-hover:scale-110 transition-transform duration-300 rounded" />
+                  <span className="text-xs font-medium text-slate-400 text-center">{tool.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Card 5: GitHub Card (Spans 1 column, 1 row) */}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="500"
+            className="bg-slate-900/40 border border-slate-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl flex flex-col justify-between hover:border-indigo-500/30 transition-colors duration-300 min-h-[220px]"
+          >
+            <div className="flex items-start justify-between">
+              <div>
+                <span className="text-indigo-400 text-xs font-bold uppercase tracking-widest">Repositories</span>
+                <h3 className="text-2xl font-bold text-white mt-2">GitHub</h3>
+              </div>
+              <img src={githubLogo} alt="GitHub" className="w-10 h-10 object-contain filter invert opacity-80" />
+            </div>
+            <div className="my-2 text-slate-400 text-sm font-semibold">
+              💻 12+ Public Repositories <br />
+              🚀 Actively pushing clean code
+            </div>
+            <a
+              href="https://github.com/Bavinduyeshan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full text-center bg-slate-950 border border-slate-800 hover:border-indigo-500/30 hover:bg-slate-900 text-slate-300 hover:text-white font-semibold py-2.5 rounded-xl transition-all duration-300 text-sm active:scale-95"
+            >
+              Follow
+            </a>
+          </div>
+
+          {/* Card 6: Code Quote Card (Spans 1 column, 1 row) */}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="600"
+            className="bg-slate-900/40 border border-slate-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl flex flex-col justify-center items-center hover:border-indigo-500/30 transition-colors duration-300 text-center min-h-[220px]"
+          >
+            <div className="w-full text-left mb-3 select-none">
+              <div className="flex space-x-1.5 mb-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-rose-500"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+              </div>
+            </div>
+            <p className="font-mono text-sm text-slate-300 leading-relaxed italic">
+              "Simplicity is the soul of efficiency."
             </p>
-            <div className="flex space-x-6">
-              <a
-                href="https://www.linkedin.com/in/bavindu-yeshan-3a26052a7/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-2 rounded-full hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105"
-              >
-                <img src={linkedinLogo} alt="LinkedIn" className="w-6 h-6 mr-2 object-contain" />
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/Bavinduyeshan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-2 rounded-full hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105"
-              >
-                <img src={githubLogo} alt="GitHub" className="w-6 h-6 mr-2 object-contain" />
-                GitHub
-              </a>
+            <div className="mt-4 font-mono text-xs text-indigo-400 flex items-center space-x-1 select-none">
+              <span>bavindu@nibm</span>
+              <span className="w-2 h-4 bg-indigo-500 animate-pulse inline-block"></span>
             </div>
           </div>
 
-          {/* Right Column: Skills */}
-          <div data-aos="fade-up" data-aos-delay="600" className="space-y-8">
-            {/* Programming Languages */}
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-6 text-center lg:text-left">Programming Languages</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                {programmingLanguages.map((lang) => (
-                  <div
-                    key={lang.id}
-                    className="flex flex-col items-center p-4 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 rounded-xl shadow-lg hover:bg-gradient-to-r hover:from-indigo-600/50 hover:to-purple-600/50 transition-all duration-300 transform hover:scale-105"
-                  >
-                    <img src={lang.logo} alt={lang.name} className="w-12 h-12 object-contain mb-2" />
-                    <span className="text-sm font-medium text-white">{lang.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Frameworks and Tools */}
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-6 text-center lg:text-left">Frameworks & Tools</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                {frameworksAndTools.map((tool) => (
-                  <div
-                    key={tool.id}
-                    className="flex flex-col items-center p-4 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 rounded-xl shadow-lg hover:bg-gradient-to-r hover:from-indigo-600/50 hover:to-purple-600/50 transition-all duration-300 transform hover:scale-105"
-                  >
-                    <img src={tool.logo} alt={tool.name} className="w-12 h-12 object-contain mb-2" />
-                    <span className="text-sm font-medium text-white">{tool.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

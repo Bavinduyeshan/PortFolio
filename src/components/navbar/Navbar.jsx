@@ -1,87 +1,9 @@
-// import React, { useState } from 'react';
-
-// export default function Navbar() {
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const NavbarLinks = [
-//     { id: 1, name: 'Home', link: '#home' },
-//     { id: 2, name: 'Skills', link: '#skills' },
-//     { id: 3, name: 'Projects', link: '#projects' },
-//     { id: 4, name: 'Contact', link: '#contact' },
-//   ];
-
-//   const toggleMenu = () => {
-//     setIsOpen(!isOpen);
-//   };
-
-//   return (
-//     <header data-aos='fade-up' className='absolute top-0 w-full body-font z-10'>
-//       <div className='container mx-auto flex justify-between items-center p-5'>
-//         {/* Logo Section */}
-//         <a className='flex title-font font-medium text-gray-900 mb-4 md:mb-0'>
-//           <span className='ml-3 mr-11 font-bold text-white text-3xl sm:text-4xl'>Portfolio</span>
-//         </a>
-
-//         {/* Navbar Links for Desktop */}
-//         <nav className='hidden md:flex items-center text-base text-white space-x-7'>
-//           {NavbarLinks.map((e) => (
-//             <a
-//               key={e.id}
-//               href={e.link}
-//               className='relative hover:text-blue-100 group'
-//             >
-//               {e.name}
-//               <span className="absolute left-0 bottom-[-10px] bg-white h-[3px] w-0 group-hover:w-full transition-all duration-300"></span>
-//             </a>
-//           ))}
-//         </nav>
-
-//         {/* Hamburger Button for Mobile */}
-//         <div className='md:hidden flex items-center'>
-//           <button
-//             onClick={toggleMenu}
-//             className='text-white focus:outline-none'
-//           >
-//             <svg
-//               className='w-6 h-6'
-//               fill='none'
-//               stroke='currentColor'
-//               viewBox='0 0 24 24'
-//               xmlns='http://www.w3.org/2000/svg'
-//             >
-//               <path
-//                 strokeLinecap='round'
-//                 strokeLinejoin='round'
-//                 strokeWidth='2'
-//                 d='M4 6h16M4 12h16M4 18h16'
-//               />
-//             </svg>
-//           </button>
-//         </div>
-//       </div>
-
-//       {/* Mobile Menu */}
-//       <div
-//         className={`md:hidden ${isOpen ? 'block' : 'hidden'} bg-gray-900 p-4`}
-//       >
-//         {NavbarLinks.map((e) => (
-//           <a
-//             key={e.id}
-//             href={e.link}
-//             className='block text-white py-2 px-4 hover:bg-blue-700'
-//           >
-//             {e.name}
-//           </a>
-//         ))}
-//       </div>
-//     </header>
-//   );
-// }
 import React, { useState, useEffect } from 'react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
 
   const NavbarLinks = [
     { id: 1, name: 'Home', link: '#home' },
@@ -94,129 +16,190 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
-  // Trigger expansion animation on mount
+  // Dynamic Scroll Observer to highlight active link
   useEffect(() => {
-    setIsExpanded(true);
+    const handleScroll = () => {
+      const sections = ['home', 'skills', 'projects', 'contact'];
+      const scrollPosition = window.scrollY + 180;
+
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+
+      // Add shadow/background when scrolled
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <header data-aos='fade-up' className='fixed top-4 left-0 right-0 z-50'>
-      <div className='container mx-auto px-4 relative'>
-        {/* Left Icon */}
-        <div className='absolute top-0 left-4 z-40'>
-          <a href='#home' className='text-white'>
-            <div className='w-12 h-12 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300'>
-              <svg
-                className='w-6 h-6'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth='2'
-                  d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'
-                />
-              </svg>
-            </div>
-          </a>
-        </div>
-
-        {/* Right Icon */}
-        <div className='absolute top-0 right-4 z-40'>
-          <a href='#contact' className='text-white'>
-            <div className='w-12 h-12 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300'>
-              <svg
-                className='w-6 h-6'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth='2'
-                  d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
-                />
-              </svg>
-            </div>
-          </a>
-        </div>
-
-        {/* Navbar Container with transition */}
-        <div className='flex justify-center items-center'>
-          <nav
-            className={`flex items-center bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-full shadow-lg py-2 px-6 backdrop-blur-sm bg-opacity-90 transition-all duration-500 ${
-              isExpanded ? 'scale-100' : 'scale-75 opacity-0'
-            }`}
-          >
-            {/* Logo Section */}
-            <a href='#home' className='flex items-center mr-8'>
-              <span className='font-bold text-white text-2xl sm:text-3xl'>Portfolio</span>
-            </a>
-
-            {/* Navbar Links for Desktop */}
-            <div className='hidden md:flex items-center space-x-4'>
-              {NavbarLinks.map((e) => (
-                <a
-                  key={e.id}
-                  href={e.link}
-                  className='text-white px-4 py-2 rounded-full hover:bg-white hover:bg-opacity-20 transition-all duration-300 relative group'
-                >
-                  {e.name}
-                  <span className='absolute left-1/2 bottom-0 h-0.5 w-0 bg-white group-hover:w-1/2 transition-all duration-300 origin-center'></span>
-                  <span className='absolute right-1/2 bottom-0 h-0.5 w-0 bg-white group-hover:w-1/2 transition-all duration-300 origin-center'></span>
-                </a>
-              ))}
-            </div>
-
-            {/* Hamburger Button for Mobile */}
-            <div className='md:hidden flex items-center'>
-              <button
-                onClick={toggleMenu}
-                className='text-white focus:outline-none p-2 rounded-full hover:bg-white hover:bg-opacity-20 transition-all duration-300'
-                aria-label='Toggle menu'
-              >
+      <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+          scrolled
+              ? 'bg-[#05070d]/90 backdrop-blur-xl border-b border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.4)]'
+              : 'bg-transparent backdrop-blur-none'
+      }`}>
+        <div className="container mx-auto px-6 md:px-12 lg:px-16 flex items-center justify-between py-3 md:py-4">
+          {/* Left: Logo block with enhanced gradient */}
+          <a href="#home" className="flex items-center space-x-3 group select-none">
+            <div className="relative">
+              {/* Glow effect behind logo */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-purple-500 to-cyan-400 rounded-lg blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+              <div className="relative w-10 h-10 rounded-lg bg-gradient-to-tr from-purple-500 via-pink-500 to-cyan-400 flex items-center justify-center shadow-[0_0_30px_rgba(139,92,246,0.3)] group-hover:scale-110 transition-all duration-300 group-hover:shadow-[0_0_40px_rgba(139,92,246,0.5)]">
                 <svg
-                  className='w-6 h-6'
-                  fill='none'
-                  stroke='currentColor'
-                  viewBox='0 0 24 24'
-                  xmlns='http://www.w3.org/2000/svg'
+                    className="w-5 h-5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth='2'
-                    d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2.5"
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
                   />
                 </svg>
-              </button>
+              </div>
             </div>
+            <span className="font-bold text-xl text-white tracking-wide group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-400 transition-all duration-300">
+            Bavindu
+          </span>
+          </a>
+
+          {/* Center: Navigation Links for Desktop */}
+          <nav className="hidden md:flex items-center space-x-1">
+            {NavbarLinks.map((e) => {
+              const isSectionActive = activeSection === e.link.substring(1);
+              return (
+                  <a
+                      key={e.id}
+                      href={e.link}
+                      className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                          isSectionActive
+                              ? 'text-white'
+                              : 'text-slate-300 hover:text-white hover:bg-white/5'
+                      }`}
+                  >
+                    {isSectionActive && (
+                        <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border border-purple-500/30 shadow-[0_0_20px_rgba(139,92,246,0.15)]"></span>
+                    )}
+                    <span className="relative z-10">{e.name}</span>
+                    {isSectionActive && (
+                        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-purple-400 to-cyan-400 rounded-full"></span>
+                    )}
+                  </a>
+              );
+            })}
           </nav>
+
+          {/* Right: Actions */}
+          <div className="hidden md:flex items-center space-x-4">
+            <a
+                href="https://www.linkedin.com/in/bavindu-yeshan-3a26052a7/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 hover:scale-105"
+            >
+              LinkedIn
+            </a>
+
+            <a
+                href="https://github.com/Bavinduyeshan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group overflow-hidden bg-gradient-to-r from-purple-600/20 to-cyan-600/20 border border-purple-500/30 hover:border-purple-400/50 text-white text-sm font-medium rounded-lg px-4 py-2 transition-all duration-300 flex items-center gap-1.5 shadow-[0_0_20px_rgba(139,92,246,0.1)] hover:shadow-[0_0_30px_rgba(139,92,246,0.2)] active:scale-95"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <svg className="w-4 h-4 relative z-10" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.26.793-.577v-2.234c-3.338.724-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.087-.744.083-.729.083-.729 1.205.085 1.838 1.236 1.838 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.776.418-1.304.762-1.604-2.665-.305-5.466-1.334-5.466-5.932 0-1.31.467-2.381 1.235-3.221-.124-.304-.535-1.527.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 3.803c1.02.002 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.649.242 2.872.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.803 5.625-5.475 5.921.429.371.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.8 24 17.302 24 12c0-6.627-5.373-12-12-12z" />
+              </svg>
+              <span className="relative z-10">GitHub</span>
+            </a>
+          </div>
+
+          {/* Mobile Hamburger Button */}
+          <div className="md:hidden flex items-center space-x-2">
+            <button
+                onClick={toggleMenu}
+                className="text-slate-300 hover:text-white focus:outline-none p-2 rounded-lg hover:bg-white/5 transition-all duration-300"
+                aria-label="Toggle menu"
+            >
+              <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+                />
+              </svg>
+            </button>
+          </div>
         </div>
 
-        {/* Mobile Menu */}
-        <div
-          className={`md:hidden ${isOpen ? 'block' : 'hidden'} bg-gradient-to-b from-indigo-600 to-purple-600 rounded-2xl mt-2 mx-4 shadow-lg overflow-hidden transition-all duration-300 ${
-            isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
-          }`}
-        >
-          {NavbarLinks.map((e) => (
-            <a
-              key={e.id}
-              href={e.link}
-              className='block text-white py-3 px-6 hover:bg-white hover:bg-opacity-10 transition-all duration-300'
-              onClick={() => setIsOpen(false)}
-            >
-              {e.name}
-            </a>
-          ))}
-        </div>
-      </div>
-    </header>
+        {/* Mobile Menu Dropdown with enhanced styling */}
+        {isOpen && (
+            <div className="md:hidden bg-[#05070d]/98 backdrop-blur-xl border-b border-white/5 px-6 py-6 shadow-2xl space-y-4">
+              {NavbarLinks.map((e) => {
+                const isSectionActive = activeSection === e.link.substring(1);
+                return (
+                    <a
+                        key={e.id}
+                        href={e.link}
+                        className={`relative block py-2.5 px-4 rounded-lg text-base font-medium transition-all duration-300 ${
+                            isSectionActive
+                                ? 'text-white bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border border-purple-500/30 shadow-[0_0_20px_rgba(139,92,246,0.1)]'
+                                : 'text-slate-400 hover:text-white hover:bg-white/5'
+                        }`}
+                        onClick={() => setIsOpen(false)}
+                    >
+                      {e.name}
+                      {isSectionActive && (
+                          <span className="absolute right-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-400 to-cyan-400"></span>
+                      )}
+                    </a>
+                );
+              })}
+              <hr className="border-white/5 my-3" />
+              <div className="flex items-center justify-between pt-2 gap-4">
+                <a
+                    href="https://www.linkedin.com/in/bavindu-yeshan-3a26052a7/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-400 hover:text-white text-base font-medium transition-all duration-300 flex-1 text-center py-2 rounded-lg hover:bg-white/5"
+                >
+                  LinkedIn
+                </a>
+                <a
+                    href="https://github.com/Bavinduyeshan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 bg-gradient-to-r from-purple-600/20 to-cyan-600/20 border border-purple-500/30 text-white text-sm font-medium rounded-lg px-4 py-2 hover:border-purple-400/50 transition-all duration-300 flex items-center justify-center gap-1.5 shadow-[0_0_20px_rgba(139,92,246,0.1)]"
+                    onClick={() => setIsOpen(false)}
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.26.793-.577v-2.234c-3.338.724-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.087-.744.083-.729.083-.729 1.205.085 1.838 1.236 1.838 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.776.418-1.304.762-1.604-2.665-.305-5.466-1.334-5.466-5.932 0-1.31.467-2.381 1.235-3.221-.124-.304-.535-1.527.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 3.803c1.02.002 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.649.242 2.872.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.803 5.625-5.475 5.921.429.371.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.8 24 17.302 24 12c0-6.627-5.373-12-12-12z" />
+                  </svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+        )}
+      </header>
   );
 }
