@@ -5,15 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender.mjs && node scripts/verify-seo.mjs",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:seo": "node scripts/verify-seo.mjs"
   },
   "dependencies": {
     "aos": "^2.3.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-helmet-async": "^2.0.5"
+    "react-helmet-async": "^2.0.5",
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
