@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile, access } from "node:fs/promises";
+import { readFile, access, readdir } from "node:fs/promises";
 import { site, projects } from "../src/content/site.js";
 const html = await readFile("dist/index.html", "utf8");
 assert.match(html, /<html lang="en"[^>]*>/);
@@ -48,6 +48,16 @@ assert.ok(
 await access("dist/og-image.png");
 await access("dist/favicon.svg");
 await access("dist/404.html");
+for (const filename of (await readdir("public")).filter((name) =>
+  /^google[0-9a-f]+\.html$/.test(name),
+)) {
+  assert.equal(
+    await readFile(`dist/${filename}`, "utf8"),
+    await readFile(`public/${filename}`, "utf8"),
+    `Publish the Google verification file unchanged: ${filename}`,
+  );
+}
+
 assert.ok((await readFile("dist/404.html", "utf8")).includes("noindex"));
 assert.ok(
   !(await readFile("netlify.toml", "utf8")).includes("status = 200"),
